@@ -11,7 +11,34 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css">
 
-    <title>Moviespedia</title>
+    <title>World of Movies</title>
   </head>
 
   <body>
+
+    <nav class="position-fixed w-100">
+      <header class="p-4 text-white">
+        <div class="container">
+          <div class="d-flex flex-wrap flex-column flex-md-row flex-lg-row align-items-center justify-content-center justify-content-md-between justify-content-lg-between">
+            <a href="/" class="d-flex align-items-center mb-md-0 mb-4 mb-lg-0 text-white text-decoration-none">
+              <img src="../images/logo.png" alt="WOM logo" class="me-3">
+              <span class="fs-2">WoM</span>
+            </a>
+
+            <form class="d-flex align-items-center flex-column flex-lg-row flex-md-row" action="/" method="post">
+              <input class="p-2 w-100 rounded border-0 me-md-3 me-lg-3 me-0" type="text" name="userQuery" placeholder="TV or movie titles..." required>
+
+              <div class="d-flex align-items-center mt-4 mb-4">
+                <label class="fs-5 me-2" for="movie">Movie</label>
+                <input class="me-3 form-check-input" type="radio" name="seriesOrMovie" id="movie" value="movie" checked>
+
+                <label class="fs-5 me-2" for="series">Series</label>
+                <input class="me-0 me-md-3 me-lg-3 form-check-input" type="radio" name="seriesOrMovie" id="series" value="series">
+              </div>
+
+              <button class="btn btn-md border-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </header>
+    </nav>

@@ -89,8 +89,11 @@ app.get('/', async (req, res) => {
     jsonMoviesData.results.slice(0, 10).map(result =>
       filterMovieDataArray.push({
         title: result.title,
-        poster: result.poster_path,
-        description: result.overview,
+        poster: result.poster_path
+          ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+          : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
+        description:
+          result.overview || "We don't have an overview translated in English.",
         releaseDate: result.release_date
       })
     );
@@ -101,8 +104,11 @@ app.get('/', async (req, res) => {
     jsonSeriesData.results.slice(0, 10).map(result =>
       filterSeriesDataArray.push({
         title: result.name,
-        poster: result.poster_path,
-        description: result.overview,
+        poster: result.poster_path
+          ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+          : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
+        description:
+          result.overview || "We don't have an overview translated in English.",
         releaseDate: result.first_air_date
       })
     );
@@ -143,8 +149,12 @@ app.post('/', async (req, res) => {
       jsonData.results.map(result =>
         filterDataArray.push({
           title: result.name,
-          poster: result.poster_path,
-          description: result.overview,
+          poster: result.poster_path
+            ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+            : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
+          description:
+            result.overview ||
+            "We don't have an overview translated in English.",
           releaseDate: result.first_air_date
         })
       );
@@ -152,8 +162,12 @@ app.post('/', async (req, res) => {
       jsonData.results.map(result =>
         filterDataArray.push({
           title: result.title,
-          poster: result.poster_path,
-          description: result.overview,
+          poster: result.poster_path
+            ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+            : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
+          description:
+            result.overview ||
+            "We don't have an overview translated in English.",
           releaseDate: result.release_date
         })
       );
@@ -179,8 +193,11 @@ app.post('/moviesGenres', async (req, res) => {
     jsonData.results.map(result =>
       filterDataArray.push({
         title: result.title,
-        poster: result.poster_path,
-        description: result.overview,
+        poster: result.poster_path
+          ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+          : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
+        description:
+          result.overview || "We don't have an overview translated in English.",
         releaseDate: result.release_date
       })
     );
@@ -205,8 +222,11 @@ app.post('/seriesGenres', async (req, res) => {
     jsonData.results.map(result =>
       filterDataArray.push({
         title: result.name,
-        poster: result.poster_path,
-        description: result.overview,
+        poster: result.poster_path
+          ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+          : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
+        description:
+          result.overview || "We don't have an overview translated in English.",
         releaseDate: result.first_air_date
       })
     );
