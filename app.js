@@ -145,8 +145,8 @@ app.post('/', async (req, res) => {
       jsonData.results.map(result =>
         filterDataArray.push({
           title: result.name,
-          poster: result.poster_path
-            ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+          poster: result.backdrop_path
+            ? `https://image.tmdb.org/t/p/original/${result.backdrop_path}`
             : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
           description:
             result.overview ||
@@ -158,8 +158,8 @@ app.post('/', async (req, res) => {
       jsonData.results.map(result =>
         filterDataArray.push({
           title: result.title,
-          poster: result.poster_path
-            ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+          poster: result.backdrop_path
+            ? `https://image.tmdb.org/t/p/original/${result.backdrop_path}`
             : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
           description:
             result.overview ||
@@ -191,8 +191,8 @@ app.post('/moviesGenres', async (req, res) => {
     jsonData.results.map(result =>
       filterGenreArray.push({
         title: result.title,
-        poster: result.poster_path
-          ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+        poster: result.backdrop_path
+          ? `https://image.tmdb.org/t/p/original/${result.backdrop_path}`
           : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
         description:
           result.overview || "We don't have an overview translated in English.",
@@ -222,8 +222,8 @@ app.post('/seriesGenres', async (req, res) => {
     jsonData.results.map(result =>
       filterGenreArray.push({
         title: result.name,
-        poster: result.poster_path
-          ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
+        poster: result.backdrop_path
+          ? `https://image.tmdb.org/t/p/original/${result.backdrop_path}`
           : 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg',
         description:
           result.overview || "We don't have an overview translated in English.",

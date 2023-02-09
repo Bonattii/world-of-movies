@@ -14,6 +14,14 @@ body {
   font-family: 'Montserrat';
 }
 
+h2 {
+  font-weight: bold;
+}
+
+p {
+  letter-spacing: 1px;
+}
+
 nav {
   background-color: #0d253f;
 }
@@ -70,6 +78,8 @@ nav {
   font-size: 3.5rem;
   font-weight: 900;
   line-height: 2.5;
+  background-color: #0d253f;
+  color: #fff;
 }
 
 .logo {
@@ -117,7 +127,7 @@ nav {
 #series {
   background-color: #90cea1;
   padding-top: 120px;
-  padding-bottom: 120px;
+  padding-bottom: 240px;
 }
 
 #moviesGenres,
@@ -154,10 +164,15 @@ nav {
   background-color: #90cea1;
 }
 
+.item-inner,
 .carousel-item-inner {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.item-inner {
+  background-color: #01b4e4;
 }
 
 .image {
@@ -176,4 +191,13 @@ nav {
 #results {
   padding-bottom: 220px;
   padding-top: calc(var(--nav-height));
+  background-color: #0d253f;
+}
+
+.card-blue {
+  background-color: #01b4e4;
+}
+
+.card-green {
+  background-color: #90cea1;
 }
