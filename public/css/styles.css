@@ -1,20 +1,27 @@
-/* #dbdbdb */
-
 :root {
   --nav-height: 80px;
 }
 
+/* General */
+
 html,
 body {
+  background-color: #0d253f;
   min-height: 100%;
 }
 
 body {
-  text-align: center;
   font-family: 'Montserrat';
+  text-align: center;
 }
 
-h2 {
+h1,
+h2,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
 }
 
@@ -22,69 +29,25 @@ p {
   letter-spacing: 1px;
 }
 
-nav {
-  background-color: #0d253f;
+/* Color */
+
+.background-green {
+  background-color: #90cea1;
 }
 
-.navbar-brand {
-  font-family: 'Ubuntu';
+.background-blue {
+  background-color: #01b4e4;
 }
 
-footer {
-  background-color: #0d253f;
-}
-
-input[type='text'] {
-  color: #0d253f;
-}
-
-input[type='text']::placeholder {
-  color: #0d253f;
-}
-
-nav {
-  z-index: 1;
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(155, 155, 155, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-.navbar-toggler {
-  border-color: #fff;
-}
-
-.divider {
-  position: relative;
-  top: -0px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 200px 100vw 0 0;
-  border-color: #0d253f #01b4e4 transparent transparent;
-}
-
-.divider2 {
-  position: relative;
-  top: -0px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 200px 100vw 0 0;
-  border-color: #01b4e4 #90cea1 transparent transparent;
-}
+/* Headers */
 
 .big-heading {
   font-size: 3.5rem;
   font-weight: 900;
   line-height: 2.5;
-  background-color: #0d253f;
-  color: #fff;
 }
 
-.logo {
-  margin-top: -0.5rem;
-}
+/* Buttons */
 
 .btn-color {
   background: linear-gradient(
@@ -108,27 +71,7 @@ nav {
   );
 }
 
-#results {
-  padding-top: var(--nav-height);
-}
-
-#header {
-  background-color: #0d253f;
-  padding-bottom: 120px;
-  padding-top: calc(var(--nav-height));
-}
-
-#movies {
-  background-color: #01b4e4;
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
-
-#series {
-  background-color: #90cea1;
-  padding-top: 120px;
-  padding-bottom: 240px;
-}
+/* Select Inputs */
 
 #moviesGenres,
 #seriesGenres {
@@ -139,45 +82,38 @@ nav {
   padding: 5px;
 }
 
-#moviesGenres {
-  background-color: #01b4e4;
+/* Text inputs */
+
+input[type='text'],
+input[type='text']::placeholder {
+  color: #0d253f;
 }
 
-#seriesGenres {
-  background-color: #90cea1;
+/* Dividers */
+
+.divider,
+.divider2 {
+  position: relative;
+  top: -0px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 200px 100vw 0 0;
+  border-color: #0d253f #01b4e4 transparent transparent;
 }
 
-#carouselMovies,
-#carouselSeries {
-  margin-top: 120px;
+.divider2 {
+  border-color: #01b4e4 #90cea1 transparent transparent;
 }
+
+/* Cards */
 
 .own-card {
   width: 150px;
 }
 
-.carousel-item {
-  background-color: #01b4e4;
-}
-
-.carousel-green {
-  background-color: #90cea1;
-}
-
-.item-inner,
-.carousel-item-inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.item-inner {
-  background-color: #01b4e4;
-}
-
 .image {
   border-radius: 8px;
-  width: 100%;
   min-height: calc(150px * 1.5);
   height: calc(150px * 1.5);
   overflow: hidden;
@@ -188,16 +124,66 @@ nav {
   height: 100%;
 }
 
-#results {
-  padding-bottom: 220px;
-  padding-top: calc(var(--nav-height));
+/* Carousels */
+
+#carouselMovies,
+#carouselSeries {
+  margin-top: 120px;
+}
+
+.carousel-item-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navbar */
+
+nav {
   background-color: #0d253f;
+  z-index: 1;
 }
 
-.card-blue {
-  background-color: #01b4e4;
+.navbar-brand {
+  font-family: 'Ubuntu';
 }
 
-.card-green {
-  background-color: #90cea1;
+.logo {
+  margin-top: -0.5rem;
+}
+
+.navbar-toggler {
+  border-color: #fff;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(155, 155, 155, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Sections */
+
+#header,
+#movies {
+  padding-bottom: 120px;
+}
+
+#header,
+#results {
+  padding-top: calc(var(--nav-height) + 120px);
+}
+
+#movies,
+#series {
+  padding-top: 120px;
+}
+
+#series,
+#results {
+  padding-bottom: 240px;
+}
+
+/* Results Section */
+
+#results {
+  padding-inline: 15%;
 }

@@ -2,7 +2,7 @@
   <section id="results">
     <div class="container">
       <% for (let i in filterDataArray) {%>
-        <div class="card mb-5 border-0 shadow <%= i % 2 === 0 ? "card-blue" : "card-green" %>">
+        <div class="card mb-5 border-0 shadow <%= i % 2 === 0 ? "background-blue" : "background-green" %>">
           <img class="card-img-top" src="<%= filterDataArray[i].poster %>" alt="<%= filterDataArray[i].title %> Poster">
           <div class="card-body">
             <h2 class="card-title"><%= filterDataArray[i].title %></h2>

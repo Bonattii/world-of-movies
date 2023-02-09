@@ -142,7 +142,7 @@ app.post('/', async (req, res) => {
 
     // Tv and Movie have different properties name
     if (userChoice === 'series') {
-      jsonData.results.map(result =>
+      jsonData.results.slice(0, 10).map(result =>
         filterDataArray.push({
           title: result.name,
           poster: result.backdrop_path
@@ -155,7 +155,7 @@ app.post('/', async (req, res) => {
         })
       );
     } else {
-      jsonData.results.map(result =>
+      jsonData.results.slice(0, 10).map(result =>
         filterDataArray.push({
           title: result.title,
           poster: result.backdrop_path
@@ -188,7 +188,7 @@ app.post('/moviesGenres', async (req, res) => {
 
     const jsonData = await data.json();
 
-    jsonData.results.map(result =>
+    jsonData.results.slice(0, 10).map(result =>
       filterGenreArray.push({
         title: result.title,
         poster: result.backdrop_path
@@ -219,7 +219,7 @@ app.post('/seriesGenres', async (req, res) => {
 
     const jsonData = await data.json();
 
-    jsonData.results.map(result =>
+    jsonData.results.slice(0, 10).map(result =>
       filterGenreArray.push({
         title: result.name,
         poster: result.backdrop_path
