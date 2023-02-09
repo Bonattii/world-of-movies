@@ -1,27 +1,33 @@
 <%- include("header") -%>
   <section id="header">
-    
+
   </section>
 
-  <form class="pt-20" action="/moviesGenres" method="post">
-    <label for="moviesGenres">Search for specficic genres</label>
-    <select name="moviesGenres" id="moviesGenres">
-      <% for (let i in moviesGenresList) {%>
-        <option value="<%= moviesGenresList[i].id %>"><%= moviesGenresList[i].name %></option>
-      <% } %>
-    </select>
+  <section id="movies">
+    <h2>TOP 10 Movies Right Now!</h2>
 
-    <button type="submit">Search</button>
-  </form>
+    <form class="pt-20" action="/moviesGenres" method="post">
+      <label for="moviesGenres">Search for specficic genres</label>
+      <select name="moviesGenres" id="moviesGenres">
+        <% for (let i in moviesGenresList) {%>
+          <option value="<%= moviesGenresList[i].id %>"><%= moviesGenresList[i].name %></option>
+        <% } %>
+      </select>
 
-  <% for (let i in filterMovieDataArray) {%>
-    <!-- <img src="<%= filterMovieDataArray[i].poster %>" alt=""> -->
-    <h2><%= filterMovieDataArray[i].title %></h2>
-    <p><%= filterMovieDataArray[i].releaseDate %></p>
-    <p><%= filterMovieDataArray[i].description %></p>
-  <% } %>
+      <button type="submit">Search</button>
+    </form>
+
+    <% for (let i in filterMovieDataArray) {%>
+      <!-- <img src="<%= filterMovieDataArray[i].poster %>" alt=""> -->
+      <h2><%= filterMovieDataArray[i].title %></h2>
+      <p><%= filterMovieDataArray[i].releaseDate %></p>
+      <p><%= filterMovieDataArray[i].description %></p>
+    <% } %>
+  </section>
 
   <section id="series">
+    <h2>TOP 10 Series Right Now!</h2>
+
     <form action="/seriesGenres" method="post">
       <label for="seriesGenres">Search for specficic genres</label>
       <select name="seriesGenres" id="seriesGenres">
