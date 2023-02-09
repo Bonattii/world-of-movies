@@ -111,7 +111,8 @@ nav {
   padding-bottom: 120px;
 }
 
-#carouselMovies {
+#carouselMovies,
+#carouselSeries {
   margin-top: 120px;
 }
 
@@ -121,6 +122,10 @@ nav {
 
 .carousel-item {
   background-color: #01b4e4;
+}
+
+.carousel-green {
+  background-color: #90cea1;
 }
 
 .carousel-item-inner {

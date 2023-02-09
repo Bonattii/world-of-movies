@@ -36,7 +36,7 @@
         <button type="submit">Search</button>
       </form>
 
-      <div id="carouselMovies" class="carousel slide carousel-multi-item ">
+      <div id="carouselMovies" class="carousel slide carousel-multi-item">
         <div class="carousel-inner">
           <% for (let i in filterMovieDataArray) {%>
             <div class="<%= i == 0 ? "carousel-item active" : "carousel-item" %>">
@@ -96,12 +96,45 @@
         <button type="submit">Search</button>
       </form>
 
-      <% for (let i in filterSeriesDataArray) {%>
-        <!-- <img src="<%= filterSeriesDataArray[i].poster %>" alt=""> -->
-        <h2><%= filterSeriesDataArray[i].title %></h2>
-        <p><%= filterSeriesDataArray[i].releaseDate %></p>
-        <p><%= filterSeriesDataArray[i].description %></p>
-      <% } %>
+      <div id="carouselSeries" class="carousel slide carousel-multi-item">
+        <div class="carousel-inner">
+          <% for (let i in filterSeriesDataArray) {%>
+            <div class="carousel-green <%= i == 0 ? "carousel-item active" : "carousel-item" %>">
+              <div class="row carousel-item-inner">
+                <div class="own-card col-lg-6 mb-5 mb-md-0 mb-lg-0">
+                  <div class="image">
+                    <img src="<%= filterSeriesDataArray[i].poster %>" alt="">
+                  </div>
+                </div>
+                <div class="content col-lg-6">
+                  <h2><%= filterSeriesDataArray[i].title %></h2>
+                  <p><%= filterSeriesDataArray[i].releaseDate %></p>
+                  <p><%= filterSeriesDataArray[i].description %></p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselSeries"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselSeries"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </section>
 
