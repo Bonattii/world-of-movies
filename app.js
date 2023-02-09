@@ -112,7 +112,7 @@ app.get('/', async (req, res) => {
       })
     );
   } catch (error) {
-    console.log(error);
+    res.render('error');
   }
 
   // Render the page with the informations passed
@@ -182,6 +182,10 @@ app.post('/', async (req, res) => {
       );
     }
 
+    if (filterDataArray.length === 0) {
+      res.render('noresults');
+    }
+
     // Redirect to the results route
     res.redirect('/results');
   } catch (error) {
@@ -217,7 +221,11 @@ app.post('/moviesGenres', async (req, res) => {
       })
     );
   } catch (error) {
-    console.log(error);
+    res.render('error');
+  }
+
+  if (filterGenreArray.length === 0) {
+    res.render('noresults');
   }
 
   // Redirect to the genres/results route
@@ -252,7 +260,11 @@ app.post('/seriesGenres', async (req, res) => {
       })
     );
   } catch (error) {
-    console.log(error);
+    res.render('error');
+  }
+
+  if (filterGenreArray.length === 0) {
+    res.render('noresults');
   }
 
   // Redirect to the genres/results route

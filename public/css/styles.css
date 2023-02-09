@@ -163,7 +163,8 @@ nav {
 /* Sections */
 
 #header,
-#movies {
+#movies,
+#error {
   padding-bottom: 120px;
 }
 
@@ -173,7 +174,8 @@ nav {
 }
 
 #movies,
-#series {
+#series,
+#error {
   padding-top: 120px;
 }
 
