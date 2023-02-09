@@ -7,6 +7,47 @@ dotenv.config();
 
 const app = express();
 
+const moviesGenresList = [
+  { id: 28, name: 'Action' },
+  { id: 12, name: 'Adventure' },
+  { id: 16, name: 'Animation' },
+  { id: 35, name: 'Comedy' },
+  { id: 80, name: 'Crime' },
+  { id: 99, name: 'Documentary' },
+  { id: 18, name: 'Drama' },
+  { id: 10751, name: 'Family' },
+  { id: 14, name: 'Fantasy' },
+  { id: 36, name: 'History' },
+  { id: 27, name: 'Horror' },
+  { id: 10402, name: 'Music' },
+  { id: 9648, name: 'Mystery' },
+  { id: 10749, name: 'Romance' },
+  { id: 878, name: 'Science Fiction' },
+  { id: 10770, name: 'TV Movie' },
+  { id: 53, name: 'Thriller' },
+  { id: 10752, name: 'War' },
+  { id: 37, name: 'Western' }
+];
+
+const seriesGenresList = [
+  { id: 10759, name: 'Action & Adventure' },
+  { id: 16, name: 'Animation' },
+  { id: 35, name: 'Comedy' },
+  { id: 80, name: 'Crime' },
+  { id: 99, name: 'Documentary' },
+  { id: 18, name: 'Drama' },
+  { id: 10751, name: 'Family' },
+  { id: 10762, name: 'Kids' },
+  { id: 9648, name: 'Mystery' },
+  { id: 10763, name: 'News' },
+  { id: 10764, name: 'Reality' },
+  { id: 10765, name: 'Sci-Fi & Fantasy' },
+  { id: 10766, name: 'Soap' },
+  { id: 10767, name: 'Talk' },
+  { id: 10768, name: 'War & Politics' },
+  { id: 37, name: 'Western' }
+];
+
 const filterDataArray = [];
 const filterMovieDataArray = [];
 const filterSeriesDataArray = [];
@@ -25,7 +66,12 @@ app.use(express.static('public'));
 app.get('/', async (req, res) => {
   // Garantee that the data don't get fetch again, and show duplicates on the frontEnd
   if (fetchedData) {
-    res.render('index', { filterSeriesDataArray, filterMovieDataArray });
+    res.render('index', {
+      filterSeriesDataArray,
+      filterMovieDataArray,
+      moviesGenresList,
+      seriesGenresList
+    });
     return;
   }
   // Fetch newer movies and series data to show on the frontPage
@@ -66,7 +112,12 @@ app.get('/', async (req, res) => {
     console.log(error);
   }
 
-  res.render('index', { filterSeriesDataArray, filterMovieDataArray });
+  res.render('index', {
+    filterSeriesDataArray,
+    filterMovieDataArray,
+    moviesGenresList,
+    seriesGenresList
+  });
 });
 
 // POST localhost:3000/
@@ -79,11 +130,7 @@ app.post('/', async (req, res) => {
 
   try {
     // Based on user choice, the fetch url will change for tv or movie
-    if (userChoice === 'series') {
-      typeQuery = 'tv';
-    } else {
-      typeQuery = 'movie';
-    }
+    userChoice === 'series' ? (typeQuery = 'tv') : (typeQuery = 'movie');
 
     const data = await fetch(
       `https://api.themoviedb.org/3/search/${typeQuery}?api_key=${process.env.API_KEY}&query=${userQueryWithPlusSignLower}`
@@ -116,6 +163,58 @@ app.post('/', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+// POST localhost:3000/moviesGenres
+app.post('/moviesGenres', async (req, res) => {
+  const userMoviesGenreChoice = req.body.moviesGenres;
+
+  try {
+    const data = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${userMoviesGenreChoice}`
+    );
+
+    const jsonData = await data.json();
+
+    jsonData.results.map(result =>
+      filterDataArray.push({
+        title: result.title,
+        poster: result.poster_path,
+        description: result.overview,
+        releaseDate: result.release_date
+      })
+    );
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.redirect('/results');
+});
+
+// POST localhost:3000/seriesGenres
+app.post('/seriesGenres', async (req, res) => {
+  const userSeriesGenreChoice = req.body.seriesGenres;
+
+  try {
+    const data = await fetch(
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_genres=${userSeriesGenreChoice}`
+    );
+
+    const jsonData = await data.json();
+
+    jsonData.results.map(result =>
+      filterDataArray.push({
+        title: result.name,
+        poster: result.poster_path,
+        description: result.overview,
+        releaseDate: result.first_air_date
+      })
+    );
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.redirect('/results');
 });
 
 // GET localhost:3000/results

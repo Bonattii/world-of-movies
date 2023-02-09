@@ -16,6 +16,17 @@
     <button type="submit">Query</button>
   </form>
 
+  <form action="/moviesGenres" method="post">
+    <label for="moviesGenres">Search for specficic genres</label>
+    <select name="moviesGenres" id="moviesGenres">
+      <% for (let i in moviesGenresList) {%>
+        <option value="<%= moviesGenresList[i].id %>"><%= moviesGenresList[i].name %></option>
+      <% } %>
+    </select>
+
+    <button type="submit">Search</button>
+  </form>
+
   <% for (let i in filterMovieDataArray) {%>
     <!-- <img src="https://image.tmdb.org/t/p/original/<%= filterMovieDataArray[i].poster %>" alt=""> -->
     <h2><%= filterMovieDataArray[i].title %></h2>
@@ -23,11 +34,24 @@
     <p><%= filterMovieDataArray[i].description %></p>
   <% } %>
 
+  <form action="/seriesGenres" method="post">
+    <label for="seriesGenres">Search for specficic genres</label>
+    <select name="seriesGenres" id="seriesGenres">
+      <% for (let i in seriesGenresList) {%>
+        <option value="<%= seriesGenresList[i].id %>"><%= seriesGenresList[i].name %></option>
+      <% } %>
+    </select>
+
+    <button type="submit">Search</button>
+  </form>
+
   <% for (let i in filterSeriesDataArray) {%>
     <!-- <img src="https://image.tmdb.org/t/p/original/<%= filterSeriesDataArray[i].poster %>" alt=""> -->
     <h2><%= filterSeriesDataArray[i].title %></h2>
     <p><%= filterSeriesDataArray[i].releaseDate %></p>
     <p><%= filterSeriesDataArray[i].description %></p>
   <% } %>
+
+
 
 <%- include("footer") -%>
