@@ -48,10 +48,10 @@ const seriesGenresList = [
   { id: 37, name: 'Western' }
 ];
 
-const filterDataArray = [];
-const filterMovieDataArray = [];
-const filterSeriesDataArray = [];
-let fetchedData = false;
+let filterDataArray = [];
+let filterGenreArray = [];
+let filterMovieDataArray = [];
+let filterSeriesDataArray = [];
 
 // Config app to use EJS
 app.set('view engine', 'ejs');
@@ -65,15 +65,9 @@ app.use(express.static('public'));
 // GET localhost:3000/
 app.get('/', async (req, res) => {
   // Garantee that the data don't get fetch again, and show duplicates on the frontEnd
-  if (fetchedData) {
-    res.render('index', {
-      filterSeriesDataArray,
-      filterMovieDataArray,
-      moviesGenresList,
-      seriesGenresList
-    });
-    return;
-  }
+  filterMovieDataArray = [];
+  filterSeriesDataArray = [];
+
   // Fetch newer movies and series data to show on the frontPage
   try {
     const moviesData = await fetch(
@@ -112,8 +106,6 @@ app.get('/', async (req, res) => {
         releaseDate: result.first_air_date
       })
     );
-
-    fetchedData = true;
   } catch (error) {
     console.log(error);
   }
@@ -122,7 +114,9 @@ app.get('/', async (req, res) => {
     filterSeriesDataArray,
     filterMovieDataArray,
     moviesGenresList,
-    seriesGenresList
+    seriesGenresList,
+    linkMovies: '#movies',
+    linkSeries: '#series'
   });
 });
 
@@ -133,6 +127,8 @@ app.post('/', async (req, res) => {
   const userQueryWithPlusSignLower = userQueryWithPlusSign.toLowerCase();
   const userChoice = req.body.seriesOrMovie;
   let typeQuery = '';
+
+  filterDataArray = [];
 
   try {
     // Based on user choice, the fetch url will change for tv or movie
@@ -183,6 +179,8 @@ app.post('/', async (req, res) => {
 app.post('/moviesGenres', async (req, res) => {
   const userMoviesGenreChoice = req.body.moviesGenres;
 
+  filterGenreArray = [];
+
   try {
     const data = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${userMoviesGenreChoice}`
@@ -191,7 +189,7 @@ app.post('/moviesGenres', async (req, res) => {
     const jsonData = await data.json();
 
     jsonData.results.map(result =>
-      filterDataArray.push({
+      filterGenreArray.push({
         title: result.title,
         poster: result.poster_path
           ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
@@ -205,12 +203,14 @@ app.post('/moviesGenres', async (req, res) => {
     console.log(error);
   }
 
-  res.redirect('/results');
+  res.redirect('/genres/results');
 });
 
 // POST localhost:3000/seriesGenres
 app.post('/seriesGenres', async (req, res) => {
   const userSeriesGenreChoice = req.body.seriesGenres;
+
+  filterGenreArray = [];
 
   try {
     const data = await fetch(
@@ -220,7 +220,7 @@ app.post('/seriesGenres', async (req, res) => {
     const jsonData = await data.json();
 
     jsonData.results.map(result =>
-      filterDataArray.push({
+      filterGenreArray.push({
         title: result.name,
         poster: result.poster_path
           ? `https://image.tmdb.org/t/p/original/${result.poster_path}`
@@ -234,12 +234,16 @@ app.post('/seriesGenres', async (req, res) => {
     console.log(error);
   }
 
-  res.redirect('/results');
+  res.redirect('/genres/results');
 });
 
 // GET localhost:3000/results
 app.get('/results', (req, res) => {
   res.render('results', { filterDataArray });
+});
+
+app.get('/genres/results', (req, res) => {
+  res.render('results', { filterDataArray: filterGenreArray });
 });
 
 // Makes app ready to run on production too

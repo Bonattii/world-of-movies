@@ -1,50 +1,74 @@
 <%- include("header") -%>
   <section id="header">
+    <div class="container text-white">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="big-heading">World of Movies</h1>
+          <p class="fs-4">Discover great movies and series to watch in our platform!</p>
 
+          <div class="d-flex gap-4 justify-content-center mt-5 mb-5">
+            <a class="btn btn-lg btn-color" href="<%= linkMovies %>">Movies</a>
+            <a class="btn btn-lg btn-light" href="<%= linkSeries %>">Series</a>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <img class="w-100 rounded" src="../images/header-photo.jpg" alt="">
+        </div>
+      </div>
+    </div>
   </section>
+
+  <div class="divider"></div>
 
   <section id="movies">
-    <h2>TOP 10 Movies Right Now!</h2>
+    <div class="container">
+      <h2>TOP 10 Movies Right Now!</h2>
 
-    <form class="pt-20" action="/moviesGenres" method="post">
-      <label for="moviesGenres">Search for specficic genres</label>
-      <select name="moviesGenres" id="moviesGenres">
-        <% for (let i in moviesGenresList) {%>
-          <option value="<%= moviesGenresList[i].id %>"><%= moviesGenresList[i].name %></option>
-        <% } %>
-      </select>
+      <form class="pt-20" action="/moviesGenres" method="post">
+        <label for="moviesGenres">Search for specficic genres</label>
+        <select name="moviesGenres" id="moviesGenres">
+          <% for (let i in moviesGenresList) {%>
+            <option value="<%= moviesGenresList[i].id %>"><%= moviesGenresList[i].name %></option>
+          <% } %>
+        </select>
 
-      <button type="submit">Search</button>
-    </form>
+        <button type="submit">Search</button>
+      </form>
 
-    <% for (let i in filterMovieDataArray) {%>
-      <!-- <img src="<%= filterMovieDataArray[i].poster %>" alt=""> -->
-      <h2><%= filterMovieDataArray[i].title %></h2>
-      <p><%= filterMovieDataArray[i].releaseDate %></p>
-      <p><%= filterMovieDataArray[i].description %></p>
-    <% } %>
+      <% for (let i in filterMovieDataArray) {%>
+        <!-- <img src="<%= filterMovieDataArray[i].poster %>" alt=""> -->
+        <h2><%= filterMovieDataArray[i].title %></h2>
+        <p><%= filterMovieDataArray[i].releaseDate %></p>
+        <p><%= filterMovieDataArray[i].description %></p>
+      <% } %>
+    </div>
   </section>
 
+  <div class="divider2"></div>
+
   <section id="series">
-    <h2>TOP 10 Series Right Now!</h2>
+    <div class="container">
+      <h2>TOP 10 Series Right Now!</h2>
 
-    <form action="/seriesGenres" method="post">
-      <label for="seriesGenres">Search for specficic genres</label>
-      <select name="seriesGenres" id="seriesGenres">
-        <% for (let i in seriesGenresList) {%>
-          <option value="<%= seriesGenresList[i].id %>"><%= seriesGenresList[i].name %></option>
-        <% } %>
-      </select>
+      <form action="/seriesGenres" method="post">
+        <label for="seriesGenres">Search for specficic genres</label>
+        <select name="seriesGenres" id="seriesGenres">
+          <% for (let i in seriesGenresList) {%>
+            <option value="<%= seriesGenresList[i].id %>"><%= seriesGenresList[i].name %></option>
+          <% } %>
+        </select>
 
-      <button type="submit">Search</button>
-    </form>
+        <button type="submit">Search</button>
+      </form>
 
-    <% for (let i in filterSeriesDataArray) {%>
-      <!-- <img src="<%= filterSeriesDataArray[i].poster %>" alt=""> -->
-      <h2><%= filterSeriesDataArray[i].title %></h2>
-      <p><%= filterSeriesDataArray[i].releaseDate %></p>
-      <p><%= filterSeriesDataArray[i].description %></p>
-    <% } %>
+      <% for (let i in filterSeriesDataArray) {%>
+        <!-- <img src="<%= filterSeriesDataArray[i].poster %>" alt=""> -->
+        <h2><%= filterSeriesDataArray[i].title %></h2>
+        <p><%= filterSeriesDataArray[i].releaseDate %></p>
+        <p><%= filterSeriesDataArray[i].description %></p>
+      <% } %>
+    </div>
   </section>
 
 <%- include("footer") -%>
