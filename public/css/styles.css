@@ -1,7 +1,7 @@
 /* #dbdbdb */
 
 :root {
-  --nav-height: 230px;
+  --nav-height: 80px;
 }
 
 html,
@@ -13,7 +13,7 @@ body {
   text-align: center;
 }
 
-header {
+nav {
   background-color: #0d253f;
 }
 
@@ -31,6 +31,14 @@ input[type='text']::placeholder {
 
 nav {
   z-index: 1;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(155, 155, 155, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: #fff;
 }
 
 .divider {
@@ -88,7 +96,7 @@ nav {
 #header {
   background-color: #0d253f;
   padding-bottom: 120px;
-  padding-top: calc(var(--nav-height) + 50px);
+  padding-top: calc(var(--nav-height));
 }
 
 #movies {
@@ -136,5 +144,5 @@ nav {
 
 #results {
   padding-bottom: 220px;
-  padding-top: calc(var(--nav-height) + 100px);
+  padding-top: calc(var(--nav-height));
 }
