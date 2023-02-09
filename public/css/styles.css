@@ -11,10 +11,15 @@ body {
 
 body {
   text-align: center;
+  font-family: 'Montserrat';
 }
 
 nav {
   background-color: #0d253f;
+}
+
+.navbar-brand {
+  font-family: 'Ubuntu';
 }
 
 footer {
@@ -81,6 +86,10 @@ nav {
   color: #0d253f;
 }
 
+.btn-color:hover {
+  color: #fff;
+}
+
 .btn2 {
   background: linear-gradient(
     to left,
@@ -109,6 +118,23 @@ nav {
   background-color: #90cea1;
   padding-top: 120px;
   padding-bottom: 120px;
+}
+
+#moviesGenres,
+#seriesGenres {
+  border: 1px solid #fff;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  padding: 5px;
+}
+
+#moviesGenres {
+  background-color: #01b4e4;
+}
+
+#seriesGenres {
+  background-color: #90cea1;
 }
 
 #carouselMovies,

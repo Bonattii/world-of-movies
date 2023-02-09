@@ -23,17 +23,20 @@
 
   <section id="movies" >
     <div class="container">
-      <h2>TOP 10 Movies Right Now!</h2>
+      <h2 class="mb-4 fs-1">TOP 10 Movies Right Now!</h2>
 
       <form class="pt-20" action="/moviesGenres" method="post">
-        <label for="moviesGenres">Search for specficic genres</label>
-        <select name="moviesGenres" id="moviesGenres">
-          <% for (let i in moviesGenresList) {%>
-            <option value="<%= moviesGenresList[i].id %>"><%= moviesGenresList[i].name %></option>
-          <% } %>
-        </select>
+        <div class="d-flex gap-3 align-center justify-content-center inline-block mb-4">
+          <label for="moviesGenres" class="fs-5">Search for specficic genres</label>
+          <select name="moviesGenres" id="moviesGenres" class="shadow-sm">
+            <% for (let i in moviesGenresList) {%>
+              <option value="<%= moviesGenresList[i].id %>"><%= moviesGenresList[i].name %></option>
+            <% } %>
+          </select>
 
-        <button type="submit">Search</button>
+        </div>
+
+        <button class="btn btn-md border-0 shadow btn-lg btn-color" type="submit">Search</button>
       </form>
 
       <div id="carouselMovies" class="carousel slide carousel-multi-item">
@@ -83,17 +86,19 @@
 
   <section id="series">
     <div class="container">
-      <h2>TOP 10 Series Right Now!</h2>
+      <h2 class="mb-4 fs-1">TOP 10 Series Right Now!</h2>
 
       <form action="/seriesGenres" method="post">
-        <label for="seriesGenres">Search for specficic genres</label>
-        <select name="seriesGenres" id="seriesGenres">
-          <% for (let i in seriesGenresList) {%>
-            <option value="<%= seriesGenresList[i].id %>"><%= seriesGenresList[i].name %></option>
-          <% } %>
-        </select>
+        <div class="d-flex gap-3 align-center justify-content-center inline-block mb-4">
+          <label class="fs-5" for="seriesGenres">Search for specficic genres</label>
+          <select name="seriesGenres" id="seriesGenres" class="shadow-sm">
+            <% for (let i in seriesGenresList) {%>
+              <option value="<%= seriesGenresList[i].id %>"><%= seriesGenresList[i].name %></option>
+            <% } %>
+          </select>
+        </div>
 
-        <button type="submit">Search</button>
+        <button class="btn btn-md border-0 shadow btn-color btn-lg" type="submit">Search</button>
       </form>
 
       <div id="carouselSeries" class="carousel slide carousel-multi-item">
