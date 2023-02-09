@@ -7,6 +7,7 @@ dotenv.config();
 
 const app = express();
 
+// Movies and Series genres lists
 const moviesGenresList = [
   { id: 28, name: 'Action' },
   { id: 12, name: 'Adventure' },
@@ -80,7 +81,9 @@ app.get('/', async (req, res) => {
     // Transform the movies data into a json and filter
     const jsonMoviesData = await moviesData.json();
 
+    // Take just the first 10 results and filter to get just the important informations
     jsonMoviesData.results.slice(0, 10).map(result =>
+      // Add the informations to the array
       filterMovieDataArray.push({
         title: result.title,
         poster: result.poster_path
@@ -95,7 +98,9 @@ app.get('/', async (req, res) => {
     // Transform the series data into a json and filter
     const jsonSeriesData = await seriesData.json();
 
+    // Take just the first 10 results and filter to get just the important informations
     jsonSeriesData.results.slice(0, 10).map(result =>
+      // Add the informations to the array
       filterSeriesDataArray.push({
         title: result.name,
         poster: result.poster_path
@@ -110,6 +115,7 @@ app.get('/', async (req, res) => {
     console.log(error);
   }
 
+  // Render the page with the informations passed
   res.render('index', {
     filterSeriesDataArray,
     filterMovieDataArray,
@@ -122,12 +128,15 @@ app.get('/', async (req, res) => {
 
 // POST localhost:3000/
 app.post('/', async (req, res) => {
+  // Handle the string passed by the user to the pattern needed to send the req to the API
   const userQueryFullString = req.body.userQuery;
   const userQueryWithPlusSign = userQueryFullString.replace(/ /g, '+');
   const userQueryWithPlusSignLower = userQueryWithPlusSign.toLowerCase();
+
   const userChoice = req.body.seriesOrMovie;
   let typeQuery = '';
 
+  // Garantee that the data doesn't be duplicated on the array
   filterDataArray = [];
 
   try {
@@ -142,7 +151,9 @@ app.post('/', async (req, res) => {
 
     // Tv and Movie have different properties name
     if (userChoice === 'series') {
+      // Take just the first 10 results and filter to get just the important informations
       jsonData.results.slice(0, 10).map(result =>
+        // Add the informations to the array
         filterDataArray.push({
           title: result.name,
           poster: result.backdrop_path
@@ -155,7 +166,9 @@ app.post('/', async (req, res) => {
         })
       );
     } else {
+      // Take just the first 10 results and filter to get just the important informations
       jsonData.results.slice(0, 10).map(result =>
+        // Add the informations to the array
         filterDataArray.push({
           title: result.title,
           poster: result.backdrop_path
@@ -169,6 +182,7 @@ app.post('/', async (req, res) => {
       );
     }
 
+    // Redirect to the results route
     res.redirect('/results');
   } catch (error) {
     console.log(error);
@@ -179,6 +193,7 @@ app.post('/', async (req, res) => {
 app.post('/moviesGenres', async (req, res) => {
   const userMoviesGenreChoice = req.body.moviesGenres;
 
+  // Garantee that the data doesn't be duplicated on the array
   filterGenreArray = [];
 
   try {
@@ -188,7 +203,9 @@ app.post('/moviesGenres', async (req, res) => {
 
     const jsonData = await data.json();
 
+    // Take just the first 10 results and filter to get just the important informations
     jsonData.results.slice(0, 10).map(result =>
+      // Add the informations to the array
       filterGenreArray.push({
         title: result.title,
         poster: result.backdrop_path
@@ -203,6 +220,7 @@ app.post('/moviesGenres', async (req, res) => {
     console.log(error);
   }
 
+  // Redirect to the genres/results route
   res.redirect('/genres/results');
 });
 
@@ -210,6 +228,7 @@ app.post('/moviesGenres', async (req, res) => {
 app.post('/seriesGenres', async (req, res) => {
   const userSeriesGenreChoice = req.body.seriesGenres;
 
+  // Garantee that the data doesn't be duplicated on the array
   filterGenreArray = [];
 
   try {
@@ -219,7 +238,9 @@ app.post('/seriesGenres', async (req, res) => {
 
     const jsonData = await data.json();
 
+    // Take just the first 10 results and filter to get just the important informations
     jsonData.results.slice(0, 10).map(result =>
+      // Add the informations to the array
       filterGenreArray.push({
         title: result.name,
         poster: result.backdrop_path
@@ -234,15 +255,18 @@ app.post('/seriesGenres', async (req, res) => {
     console.log(error);
   }
 
+  // Redirect to the genres/results route
   res.redirect('/genres/results');
 });
 
 // GET localhost:3000/results
 app.get('/results', (req, res) => {
+  // Render the page with the informations passed
   res.render('results', { filterDataArray });
 });
 
 app.get('/genres/results', (req, res) => {
+  // Render the page with the informations passed
   res.render('results', { filterDataArray: filterGenreArray });
 });
 
