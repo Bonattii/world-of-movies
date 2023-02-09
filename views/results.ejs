@@ -1,12 +1,14 @@
 <%- include("header") -%>
 
   <section id="results">
-    <% for (let i in filterDataArray) {%>
-      <!-- <img src="<%= filterDataArray[i].poster %>" alt=""> -->
-      <h2><%= filterDataArray[i].title %></h2>
-      <p><%= filterDataArray[i].releaseDate %></p>
-      <p><%= filterDataArray[i].description %></p>
-    <% } %>
+    <div class="container">
+      <% for (let i in filterDataArray) {%>
+        <!-- <img src="<%= filterDataArray[i].poster %>" alt=""> -->
+        <h2><%= filterDataArray[i].title %></h2>
+        <p><%= filterDataArray[i].releaseDate %></p>
+        <p><%= filterDataArray[i].description %></p>
+      <% } %>
+    </div>
   </section>
 
 <%- include("footer") -%>

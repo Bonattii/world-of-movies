@@ -4,7 +4,16 @@
   --nav-height: 230px;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 header {
+  background-color: #0d253f;
+}
+
+footer {
   background-color: #0d253f;
 }
 
@@ -89,4 +98,9 @@ nav {
   background-color: #90cea1;
   padding-top: 120px;
   padding-bottom: 120px;
+}
+
+#results {
+  padding-bottom: 220px;
+  padding-top: calc(var(--nav-height) + 100px);
 }
