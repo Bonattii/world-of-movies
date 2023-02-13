@@ -1,7 +1,7 @@
 # World of Movies (WMAD Web Dev II Mid-term)
 
 <a href="https://www.linkedin.com/in/rodrigobonatti/">
-  <img alt="Let's connect on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="165"/>
+  <img alt="Let's connect on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="175"/>
 </a>
 
 <a href="https://www.instagram.com/rodrigobonatti_/">
@@ -9,7 +9,7 @@
 </a>
 
 <a href="mailto:rodrigobonattii@gmail.com">
-  <img alt="Let's connect on Instagram" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" width="165"/>
+  <img alt="Let's connect on Instagram" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" width="180"/>
 </a>
 
 ## Overview
