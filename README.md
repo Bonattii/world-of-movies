@@ -36,6 +36,8 @@ Another option would be running using nodemon
 
 ## How to Use the Project
 
+You can acess the project with this link too [WOM](https://zany-blue-termite-kit.cyclic.app/)
+
 You have two options of search in the project, you can search by genres or by title
 
 ### Using the title search
